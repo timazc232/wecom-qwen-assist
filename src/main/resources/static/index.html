@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>物业助手 Demo · 千问辅助 + 人工接管</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>物业助手工作台</h1>
+      <p>微信/企微回调 · 通义千问辅助回复 · 工单工具调用 · 人工接管</p>
+    </div>
+    <div class="pills">
+      <span id="llmPill" class="pill">模型：检测中</span>
+      <span class="pill">同会话排队</span>
+      <span class="pill">无库内存演示</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="panel wechat">
+      <div class="panel-hd">
+        <strong>业主微信</strong>
+        <select id="userSelect">
+          <option value="wx-chen">陈先生 · 星河湾 3-1201</option>
+          <option value="wx-liu">刘女士 · 翠湖苑 8-602</option>
+        </select>
+      </div>
+      <div id="customerMsgs" class="msgs"></div>
+      <div class="chips">
+        <button data-text="卫生间漏水，帮忙报修">报修</button>
+        <button data-text="物业费收错了，我要投诉">投诉</button>
+        <button data-text="查一下我的工单进度">查工单</button>
+        <button data-text="转人工">转人工</button>
+      </div>
+      <form id="customerForm" class="composer">
+        <input id="customerInput" placeholder="输入消息，模拟微信回调..." autocomplete="off" />
+        <button type="submit">发送</button>
+      </form>
+    </section>
+
+    <section class="panel desk">
+      <div class="desk-cols">
+        <aside>
+          <h2>会话</h2>
+          <div id="sessionList" class="session-list"></div>
+        </aside>
+        <div class="desk-main">
+          <div class="panel-hd">
+            <div>
+              <strong id="agentTitle">坐席工作台</strong>
+              <span id="agentMode" class="mode">等待会话</span>
+            </div>
+            <div class="actions">
+              <button id="takeoverBtn" type="button">接管</button>
+              <button id="releaseBtn" type="button" class="ghost">交回 AI</button>
+            </div>
+          </div>
+          <div id="agentMsgs" class="msgs"></div>
+          <form id="agentForm" class="composer">
+            <input id="agentInput" placeholder="人工回复..." autocomplete="off" />
+            <button type="submit">回复</button>
+          </form>
+        </div>
+      </div>
+      <div class="tickets">
+        <h2>工单</h2>
+        <table>
+          <thead>
+            <tr><th>单号</th><th>类型</th><th>标题</th><th>等级</th><th>状态</th><th>处理人</th></tr>
+          </thead>
+          <tbody id="ticketBody">
+            <tr><td colspan="6" class="empty">还没有工单。业主说「报修」或「投诉」会走工具调用。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
