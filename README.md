@@ -1,3 +1,5 @@
+[![CI](https://github.com/timazc232/wecom-qwen-assist/actions/workflows/ci.yml/badge.svg)](https://github.com/timazc232/wecom-qwen-assist/actions/workflows/ci.yml)
+
 # 物业助手 Demo
 
 微信 / 企微回调 + 通义千问辅助回复 + 工单工具调用 + 人工接管。
